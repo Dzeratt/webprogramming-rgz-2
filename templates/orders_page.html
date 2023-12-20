@@ -1,0 +1,31 @@
+<!-- templates/orders_page.html -->
+
+{% extends "base.html" %}
+
+{% block lab %}RGZ{% endblock %}
+
+{% block header %}
+<div class="header_items">
+
+    <div class="header_item"><a class="header_item_item" href="/index/products/page/1">Товары</a></div>
+    <div class="header_item"><a class="header_item_item" href="/index/order">Сформировать заказ</a></div>
+    <div class="header_item"><a class="header_item_item" href="/index/logout">Выйти</a></div>
+    <div class="header_item"><a class="header_item_item" href="/index">Главная</a></div>
+    <div class="header_item"><p class="header_item_username">{{ username }}</p></div>
+
+</div>
+{% endblock %}
+
+{% block main %}
+    <div id="orders-list">
+        <h2>Список заказов</h2>
+        <ul>
+            {% for order in orders %}
+                <li>
+                    Заказ № {{ order[0] }} - {{ order[1] }}
+                    <a href="/index/order/details/{{ order[0] }}">Подробнее</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

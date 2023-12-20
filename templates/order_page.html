@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block lab %}RGZ{% endblock %}
+
+{% block header %}
+    <div class="header_items">
+        <div class="header_item"><a class="header_item_item" href="/index/products/page/1">Товары</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index/orders">Список заказов</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index/logout">Выйти</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index">Главная</a></div>
+        <div class="header_item"><p class="header_item_username">{{ username }}</p></div>
+    </div>
+{% endblock %}
+
+{% block main %}
+  <div class="order-form-container">
+    <h2>Формирование заказа</h2>
+
+    {% if error_message %}
+      <div class="error-message">
+          {{ error_message }}
+      </div>
+    {% endif %}
+
+    <form method="post" class="order-form">
+      <label for="order_name">Название заказа:</label>
+      <input type="text" id="order_name" name="order_name" required>
+
+      <h3>Выберите товары:</h3>
+      {% for product in products %}
+          <div class="product-item">
+              <input type="checkbox" id="product_{{ product[0] }}" name="selected_products[]" value="{{ product[0] }}">
+              <label for="product_{{ product[0] }}">
+                Артикул: {{ product[1] }}, Название: {{ product[2] }}, Количество: {{ product[3] }}
+              </label>
+              <input type="number" id="quantity_{{ product[0] }}" name="quantity_{{ product[0] }}" value="1" min="1" required>
+          </div>
+      {% endfor %}
+
+      <button type="submit" class="order-submit-button">Сформировать заказ</button>
+    </form>
+  </div>
+{% endblock %}

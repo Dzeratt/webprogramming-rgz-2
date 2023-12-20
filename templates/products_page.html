@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{%block header%}
+
+    <div class="header_items">
+
+        <div class="header_item"><a class="header_item_item" href="/index/order">Сформировать заказ</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index/orders">Список заказов</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index/logout">Выйти</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index">Главная</a></div>
+        <div class="header_item"><p class="header_item_username">{{ username }}</p></div>
+
+    </div>
+
+{%endblock%}
+
+{% block main %}
+
+    <h1>Товары</h1>
+
+    <form method="POST" action="/index/products/page/{{ current_page }}" id="load-more-form">
+        <table border="1" id="products-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Артикул</th>
+                    <th>Название</th>
+                    <th>Количество</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product[0] }}</td>
+                        <td>{{ product[1] }}</td>
+                        <td>{{ product[2] }}</td>
+                        <td>{{ product[3] }}</td>
+                        <td class="action-buttons">
+                            <form method="POST" action="/index/products/page/{{ current_page }}">
+                                <input type="hidden" name="product_id" value="{{ product[0] }}">
+                                <input type="hidden" name="action" value="add">
+                                <button type="submit" class="update-button">Добавить</button>
+                            </form>
+                            <form method="POST" action="/index/products/page/{{ current_page }}">
+                                <input type="hidden" name="product_id" value="{{ product[0] }}">
+                                <input type="hidden" name="action" value="remove">
+                                <button type="submit" class="update-button">Удалить</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            {% if current_page > 1 %}
+                <a href="{{ url_for('rgz.products_page', page=current_page-1) }}">Предыдущая</a>
+            {% endif %}
+            
+            {% for page_num in range(1, total_pages+1) %}
+                <span class="page-number {% if page_num == current_page %}current{% endif %}">
+                    <a href="{{ url_for('rgz.products_page', page=page_num) }}">{{ page_num }}</a>
+                </span>
+            {% endfor %}
+
+            {% if current_page < total_pages %}
+                <a href="{{ url_for('rgz.products_page', page=current_page+1) }}">Следующая</a>
+            {% endif %}
+        </div>
+
+        <div id="custom-product-form">
+            <h2>Добавить пользовательский товар</h2>
+            <form method="POST" action="/index/products/page/{{ current_page }}" id="custom-product-form">
+                <input type="hidden" name="action" value="add_custom">
+                <label for="article_number">Артикул:</label>
+                <input type="text" name="article_number" required>
+                <label for="name">Название:</label>
+                <input type="text" name="name" required>
+                <label for="quantity">Количество:</label>
+                <input type="number" name="quantity" required>
+                <button type="submit">Добавить</button>
+            </form>
+        </div>
+
+        <input type="hidden" name="offset" value="{{ offset }}">
+        <input type="hidden" name="limit" value="{{ limit }}">
+    </form>
+
+{% endblock %}

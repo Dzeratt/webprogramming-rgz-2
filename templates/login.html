@@ -1,0 +1,38 @@
+{%extends "base.html"%}
+
+{%block header%}
+
+    <div class="header_items">
+
+        <div class="header_item"><a class="header_item_item" href="/index/register">Зарегестрироваться</a></div>
+        <div class="header_item"><p class="header_item_username">{{ username }}</p></div>
+
+    </div>
+
+{%endblock%}
+
+{%block main%}
+    
+    <form method="POST" class="login-form">
+        <h1>Логин</h1>
+
+        <div class="login-form__input-group">
+            <input type="text" name="username" placeholder="Username" class="login-form__input">
+            <label for="username" class="login-form__label">Логин</label>
+        </div>
+
+        <div class="login-form__input-group">
+            <input type="text" name="password" placeholder="Password" class="login-form__input">
+            <label for="password" class="login-form__label">Пароль</label>
+        </div>
+
+        <button type="submit" class="login-form__button">Войти</button>
+
+        {% if errors %}
+            <div class="login-form__errors">
+                {{ errors }}
+            </div>
+        {% endif %}
+    </form>
+
+{%endblock%}

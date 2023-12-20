@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block lab %}RGZ{% endblock %}
+
+{% block header %}
+    <div class="header_items">
+        <div class="header_item"><a class="header_item_item" href="/index/products/page/1">Товары</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index/order">Сформировать заказ</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index/orders">Список заказов</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index/logout">Выйти</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index">Главная</a></div>
+        <div class="header_item"><p class="header_item_username">{{ username }}</p></div>
+    </div>
+{% endblock %}
+
+{% block main %}
+<div id="order-details">
+    <h2>Подробности заказа № {{ order_id }}</h2>
+    <p>Название заказа: {{ order_info[0] }}</p>
+    <p>Дата и время заказа: {{ order_info[1] }}</p>
+    <p>Статус заказа: {{ "Оплачен" if order_info[2] else "Не оплачен" }}</p>
+
+    <h3>Товары в заказе:</h3>
+    <ul>
+        {% for detail in order_details %}
+            <li>{{ detail[2] }} (Количество: {{ detail[0] }})</li>
+        {% endfor %}
+    </ul>
+    
+    {% if not order_info[2] %}
+        <!-- Показать кнопку только если заказ не оплачен -->
+        <form method="post" action="/index/order/pay/{{ order_id }}">
+            {% for detail in order_details %}
+                <input type="hidden" name="order_details[]" value="{{ detail[1] }}_{{ detail[0] }}">
+            {% endfor %}
+            <input type="submit" value="Присвоить статус оплачен">
+        </form>
+        
+        <!-- Показать кнопку только если заказ не оплачен -->
+        <form method="post" action="/index/order/delete/{{ order_id }}">
+            {% for detail in order_details %}
+                <input type="hidden" name="order_details[]" value="{{ detail[1] }}_{{ detail[0] }}">
+            {% endfor %}
+            <input type="submit" value="Удалить заказ">
+        </form>
+    {% else %}
+        <!-- Показать кнопку только если заказ оплачен -->
+        <form method="post" action="/index/order/cancel_payment/{{ order_id }}">
+            {% for detail in order_details %}
+                <input type="hidden" name="order_details[]" value="{{ detail[1] }}_{{ detail[0] }}">
+            {% endfor %}
+            <input type="submit" value="Отменить оплату">
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block lab %}RGZ{% endblock %}
+{%block header%}
+
+    <div class="header_items">
+
+        <div class="header_item"><a class="header_item_item" href="/index/products/page/1">Товары</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index/order">Сформировать заказ</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index/orders">Список заказов</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index/logout">Выйти</a></div>
+        <div class="header_item"><a class="header_item_item" href="/index">Главная</a></div>
+        <div class="header_item"><p class="header_item_username">{{ username }}</p></div>
+
+    </div>
+
+{%endblock%}
+{% block main %}
+<style>
+    body {
+        background-image: url('{{ url_for("static", filename="images/bg.jpg") }}');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+{% endblock %}

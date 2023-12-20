@@ -1,0 +1,479 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
+/* head {
+} */
+
+header{
+    text-align: center;
+
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: rgba(211, 211, 211, 0.9);
+}
+
+footer{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(211, 211, 211, 0.9);
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.header_items {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.header_item {
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    font-weight: bold;
+    font-size: 20px;
+
+    text-decoration: none;
+
+    text-align: center;
+    line-height: 30px;
+
+    border-radius: 15px;
+    width: auto;
+    height: 30px;
+    
+    background-color: black;
+    color: gold;
+}
+
+.header_item_item {
+    text-decoration: none;
+    color: gold;
+    margin: 0;
+}
+
+.header_item_item:hover {
+    color: red;
+    
+    font-size: 21px;
+
+    transition: all ease-out .3s;
+}
+
+.header_item_username {
+    margin: 0;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+.order-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.product-info {
+    background-color: #f0f0f0;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.product-item label {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.product-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.product-item input[type="number"] {
+    width: 50px;
+}
+
+.order-submit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-submit-button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+#products-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#products-table td {
+    padding: 10px;
+    text-align: left;
+}
+
+#products-table th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#products-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#products-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.update-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.update-button:hover {
+    background-color: #45a049;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+.pagination .current {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+
+
+
+#custom-product-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#custom-product-form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#custom-product-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+#custom-product-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#custom-product-form button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+#orders-list {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#orders-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+#orders-list li {
+    margin-bottom: 16px;
+}
+
+#orders-list li a {
+    color: #4CAF50;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+#orders-list li a:hover {
+    color: #45a049;
+}
+
+
+
+
+
+
+
+
+#order-details {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#order-details h2 {
+    color: #333;
+}
+
+#order-details p {
+    margin-bottom: 10px;
+}
+
+#order-details h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#order-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+#order-details li {
+    margin-bottom: 8px;
+}
+
+#order-details form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#order-details input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#order-details input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.login-form {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h1 {
+    text-align: center;
+}
+
+.login-form__input-group {
+    margin-bottom: 20px;
+}
+
+.login-form__input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.login-form__label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-form__button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login-form__button:hover {
+    background-color: #45a049;
+}
+
+.login-form__errors {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.registration-form {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form h1 {
+    text-align: center;
+}
+
+.registration-form__input-group {
+    margin-bottom: 20px;
+}
+
+.registration-form__input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.registration-form__label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.registration-form__button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.registration-form__button:hover {
+    background-color: #45a049;
+}
+
+.registration-form__errors {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
